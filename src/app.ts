@@ -1,14 +1,18 @@
 import express from 'express';
+import bodyParser from 'body-parser'
+import LoginController from './controllers/LoginController';
 
 class App {
     public app: express.Express;
+    public loginController: any = new LoginController().listUsers
 
     constructor() {
         this.app = express();
+        this.app.use(bodyParser.json())
     }
 
     public routes(): void {
-        this.app.get("/", (req, res) => res.status(200).json({ message: 'hello world' }))
+        this.app.get("/", this.loginController)
     }
 
     public onServer(): void {
