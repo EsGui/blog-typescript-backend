@@ -1,18 +1,16 @@
 import { MongoClient } from "mongodb";
 
 class ConnectionDB {
-    public client: any = new MongoClient("mongodb://localhost:27017/");
 
-    public async run() {
+    public client = new MongoClient("mongodb://localhost:27017/");
+
+    public connectToDataBase() {
         try {
             const database = this.client.db('blog');
-            const users = database.collection('users')
-            // console.log(await users.find({}));
-            return users
+            const users = database.collection('users');
+            return users;
         } catch (error) {
-            console.error(error)
-        } finally {
-            await this.client.close();
+            console.error(`ERROR ====>>>> ${error}`);
         }
     }
 }

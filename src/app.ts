@@ -1,10 +1,11 @@
 import express from 'express';
 import bodyParser from 'body-parser'
 import LoginController from './controllers/LoginController';
+import ConnectionDB from './connection/ConnectionDB';
 
 class App {
     public app: express.Express;
-    public loginController: any = new LoginController().listUsers
+    public loginController: any = new LoginController().listUsers;
 
     constructor() {
         this.app = express();

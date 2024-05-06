@@ -1,14 +1,13 @@
 import ConnectionDB from "../connection/ConnectionDB";
 
 class LoginController {
-    constructor() {
-        new ConnectionDB();
-    } 
-    
-    public async listUsers(req, res) {
-        const bank = new ConnectionDB().run();
-        console.log(bank.find())
-        return res.status(200).json(bank);
+
+    public async listUsers(req: Request, res: Response) {
+        const users = new ConnectionDB().connectToDataBase()
+
+        const request = await users.find({name: "Guilherme"}).toArray();
+
+        return res.status(200).json(request);
     }
 }
 
