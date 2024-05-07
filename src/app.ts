@@ -6,6 +6,7 @@ import ConnectionDB from './connection/ConnectionDB';
 class App {
     public app: express.Express;
     public loginController: any = new LoginController().listUsers;
+    public registerUser: any = new LoginController().createUser; 
 
     constructor() {
         this.app = express();
@@ -14,6 +15,7 @@ class App {
 
     public routes(): void {
         this.app.get("/", this.loginController)
+        this.app.post("/register-user", this.registerUser)
     }
 
     public onServer(): void {
