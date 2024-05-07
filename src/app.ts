@@ -1,12 +1,11 @@
 import express from 'express';
 import bodyParser from 'body-parser'
 import LoginController from './controllers/LoginController';
-import ConnectionDB from './connection/ConnectionDB';
+
+const loginController = new LoginController();
 
 class App {
     public app: express.Express;
-    public loginController: any = new LoginController().listUsersController;
-    public registerUser: any = new LoginController().createUserController; 
 
     constructor() {
         this.app = express();
@@ -14,8 +13,8 @@ class App {
     }
 
     public routes(): void {
-        this.app.get("/", this.loginController)
-        this.app.post("/register-user", this.registerUser)
+        this.app.get("/",loginController.listUsersController)
+        this.app.post("/register-user", loginController.createUserController)
     }
 
     public onServer(): void {

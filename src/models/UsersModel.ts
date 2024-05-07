@@ -2,10 +2,7 @@ import mongoose from "mongoose";
 import UserSchema from "../connection/UserSchema";
 import ConnectionDB from "../connection/ConnectionDB";
 
-const db = new ConnectionDB();
-db.connectDB();
-
-class UsersModel {
+class UsersModel extends ConnectionDB {
     public Users = mongoose.model('users', UserSchema);
 
     public async listUsers() {

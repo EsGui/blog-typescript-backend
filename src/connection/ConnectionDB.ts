@@ -13,4 +13,7 @@ class ConnectionDB {
     }
 }
 
+const db = new ConnectionDB();
+db.connectDB();
+
 export default ConnectionDB;
