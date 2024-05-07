@@ -5,8 +5,8 @@ import ConnectionDB from './connection/ConnectionDB';
 
 class App {
     public app: express.Express;
-    public loginController: any = new LoginController().listUsers;
-    public registerUser: any = new LoginController().createUser; 
+    public loginController: any = new LoginController().listUsersController;
+    public registerUser: any = new LoginController().createUserController; 
 
     constructor() {
         this.app = express();

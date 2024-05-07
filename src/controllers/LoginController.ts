@@ -1,34 +1,21 @@
-import ConnectionDB from "../connection/ConnectionDB";
 import { Request, Response } from "express";
-import UserSchema from "../connection/UserSchema";
-
-const users = new ConnectionDB().UsersDB()
-const model = new ConnectionDB().UsersModel
+import UsersModel from "../models/UsersModel";
 
 class LoginController {
+    public async listUsersController(req: Request, res: Response) {
+        const list = new UsersModel().listUsers()
 
-    public async listUsers(req: Request, res: Response) {
-        
-
-        const request = await users?.find();
-
-        return res.status(200).json(request);
+        return res.status(200).json(await list);
     }
 
-    public async createUser(req: Request, res: Response) {
+    public async createUserController(req: Request, res: Response) {
         const {
             name,
             email,
             password 
         } = req.body
 
-        const users = new model({
-            name,
-            email,
-            password,
-        });
-
-        users.save();
+        new UsersModel().createUsers(name, email, password);
 
         return res.status(200).json({ message: "Usuário cadastrado com sucesso!" });
     }
