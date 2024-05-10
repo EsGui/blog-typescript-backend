@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser'
+import cors from 'cors';
 import LoginController from './controllers/LoginController';
 import BlogsController from './controllers/BlogsController';
 
@@ -11,12 +12,13 @@ class App {
 
     constructor() {
         this.app = express();
-        this.app.use(bodyParser.json())
+        this.app.use(bodyParser.json());
+        this.app.use(cors())
     }
 
     public routes(): void {
         this.app.get("/", (req, res) => res.status(200).json({ message: "Hello world!" }))
-        this.app.get("/login",loginController.listUsersController)
+        this.app.get("/login", loginController.listUsersController)
         this.app.post("/register-user", loginController.createUserController)
         this.app.get("/list-blogs", blogsController.listBlogController)
         this.app.post("/register-blog", blogsController.creteBlogController)

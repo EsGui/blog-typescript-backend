@@ -9,10 +9,11 @@ class UsersModel extends ConnectionDB {
         return this.Users.find();
     }
 
-    public createUsers(name: String, email: String, password: String) {
+    public createUsers(name: String, email: String, nickname: String, password: String) {
         const create = new this.Users({
             name,
             email,
+            nickname,
             password
         })
         create.save();

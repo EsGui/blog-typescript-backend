@@ -12,10 +12,11 @@ class LoginController {
         const {
             name,
             email,
+            nickname,
             password 
         } = req.body
 
-        new UsersModel().createUsers(name, email, password);
+        new UsersModel().createUsers(name, email, nickname, password);
 
         return res.status(200).json({ message: "Usuário cadastrado com sucesso!" });
     }
