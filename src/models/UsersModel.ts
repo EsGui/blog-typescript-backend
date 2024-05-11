@@ -9,6 +9,11 @@ class UsersModel extends ConnectionDB {
         return this.Users.find();
     }
 
+    public async userSpecific(email: string) {
+        const user = this.Users.findOne({ email });
+        return user;
+    }
+
     public createUsers(name: String, email: String, nickname: String, password: String) {
         const create = new this.Users({
             name,

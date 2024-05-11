@@ -18,7 +18,7 @@ class App {
 
     public routes(): void {
         this.app.get("/", (req, res) => res.status(200).json({ message: "Hello world!" }))
-        this.app.get("/login", loginController.listUsersController)
+        this.app.post("/login", loginController.tokenUserController)
         this.app.post("/register-user", loginController.createUserController)
         this.app.get("/list-blogs", blogsController.listBlogController)
         this.app.post("/register-blog", blogsController.creteBlogController)
