@@ -18,10 +18,11 @@ class App {
 
     public routes(): void {
         this.app.get("/", (req, res) => res.status(200).json({ message: "Hello world!" }))
-        this.app.post("/login", loginController.tokenUserController)
-        this.app.post("/register-user", loginController.createUserController)
-        this.app.get("/list-blogs", blogsController.listBlogController)
-        this.app.post("/register-blog", blogsController.creteBlogController)
+        this.app.post("/login", loginController.tokenUserController);
+        this.app.post("/persist-login", loginController.authUserController);
+        this.app.post("/register-user", loginController.createUserController);
+        this.app.get("/list-blogs", blogsController.listBlogController);
+        this.app.post("/register-blog", blogsController.creteBlogController);
     }
 
     public onServer(): void {

@@ -9,9 +9,10 @@ class BlogsModel extends ConnectionDB {
         return this.Blogs.find();
     }
 
-    public createBlogs(title: String, content: String, author: String) {
+    public createBlogs(title: String, coverImage: String, content: String, author: String) {
         const create = new this.Blogs({
             title,
+            coverImage,
             content,
             author
         });
