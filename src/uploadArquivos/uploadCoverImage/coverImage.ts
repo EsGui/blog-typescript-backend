@@ -5,7 +5,7 @@ class Storage {
     public send() {
         const storage = multer.diskStorage({
             destination: (req, file, cb) => {
-                cb(null, "./src/uploads/image-product");
+                cb(null, "./src/uploads/coverImages");
             },
 
             filename: (req, file, cb) => {

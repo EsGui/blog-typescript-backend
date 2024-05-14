@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import cors from 'cors';
 import LoginController from './controllers/LoginController';
 import BlogsController from './controllers/BlogsController';
+import multerCoverImage from './uploadArquivos/uploadCoverImage/coverImage';
 
 const loginController = new LoginController();
 const blogsController = new BlogsController();
@@ -13,7 +14,8 @@ class App {
     constructor() {
         this.app = express();
         this.app.use(bodyParser.json());
-        this.app.use(cors())
+        this.app.use(cors());
+        this.app.use(express.static('src/uploads/'))
     }
 
     public routes(): void {
@@ -22,7 +24,7 @@ class App {
         this.app.post("/persist-login", loginController.authUserController);
         this.app.post("/register-user", loginController.createUserController);
         this.app.get("/list-blogs", blogsController.listBlogController);
-        this.app.post("/register-blog", blogsController.creteBlogController);
+        this.app.post("/register-blog", multerCoverImage.single('file'),blogsController.creteBlogController);
     }
 
     public onServer(): void {

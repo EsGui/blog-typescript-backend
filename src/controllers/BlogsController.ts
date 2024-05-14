@@ -11,12 +11,11 @@ class BlogsController {
     public async creteBlogController(req: Request, res: Response) {
         const {
             title,
-            coverImage,
             content,
             author
         } = req.body;
 
-        new BlogsModel().createBlogs(title, coverImage, content, author);
+        new BlogsModel().createBlogs(title, `http://localhost:3001/coverImages/${req && req.file && req.file.filename}`, content, author);
 
         return res.status(200).json({ message: "Blog criado com sucesso" });
     }
