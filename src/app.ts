@@ -25,6 +25,7 @@ class App {
         this.app.post("/register-user", loginController.createUserController);
         this.app.get("/list-blogs", blogsController.listBlogController);
         this.app.post("/register-blog", multerCoverImage.single('file'),blogsController.creteBlogController);
+        this.app.post("/blog-especific", blogsController.blogEspecificController);
     }
 
     public onServer(): void {

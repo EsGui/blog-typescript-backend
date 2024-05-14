@@ -19,6 +19,18 @@ class BlogsController {
 
         return res.status(200).json({ message: "Blog criado com sucesso" });
     }
+
+    public async blogEspecificController(req: Request, res: Response) {
+        const {
+            slug
+        } = req.body;
+
+        console.log(slug)
+
+        const blog = new BlogsModel().blogEspecific(slug);
+
+        return res.status(200).json(await blog);
+    }
 }
 
 export default BlogsController;

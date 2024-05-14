@@ -13,10 +13,15 @@ class BlogsModel extends ConnectionDB {
         const create = new this.Blogs({
             title,
             coverImage,
+            slug: title.replace(" ", "-"),
             content,
             author
         });
         create.save();
+    }
+
+    public blogEspecific(slug: String) {
+       return this.Blogs.findOne({ slug })
     }
 }
 
