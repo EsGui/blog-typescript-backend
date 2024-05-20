@@ -12,10 +12,11 @@ class BlogsController {
         const {
             title,
             content,
-            author
+            author,
+            userId
         } = req.body;
 
-        new BlogsModel().createBlogs(title, `http://localhost:3001/coverImages/${req && req.file && req.file.filename}`, content, author);
+        new BlogsModel().createBlogs(title, `http://localhost:3001/coverImages/${req && req.file && req.file.filename}`, content, author, userId);
 
         return res.status(200).json({ message: "Blog criado com sucesso" });
     }
